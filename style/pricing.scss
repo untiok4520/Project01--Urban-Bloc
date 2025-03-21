@@ -1,0 +1,464 @@
+$themeColor: #ff2f2c;
+$lightThemeColor: #f0eae7;
+$webBackgroundColor: #1f475a;
+
+@font-face {
+  font-family: "webFont";
+  src: url(./GenJyuuGothicX-P-Heavy.ttf);
+}
+@font-face {
+  font-family: "englishFonts";
+  src: url(./NicoMoji-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "englishFonts", "webFont", DFkai-sb, serif;
+}
+body {
+  background-color: $webBackgroundColor;
+  overflow-x: hidden;
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    z-index: 100;
+    padding: 15px 20px 15px 15px;
+    // margin-bottom: 10px;
+    min-height: 100px;
+
+    div.logo {
+      display: flex;
+      flex: 2 0;
+      align-items: center;
+      margin: 10px;
+      a {
+        display: inline-block;
+        img {
+          width: 110px;
+        }
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: $themeColor;
+        padding: 0 10px;
+      }
+    }
+    div.right-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 1;
+      .user-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: $themeColor;
+        margin-right: 20px;
+        a {
+          text-decoration: none;
+          &:visited {
+            color: $themeColor;
+          }
+        }
+        a:hover {
+          color: $lightThemeColor;
+          transition: all 0.4s ease;
+        }
+      }
+      .cart-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: $themeColor;
+        margin-right: 20px;
+        a {
+          text-decoration: none;
+        }
+        a:visited {
+          color: $themeColor;
+        }
+        a:hover {
+          color: $lightThemeColor;
+          transition: all 0.4s ease;
+        }
+      }
+      .menu-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: $themeColor;
+        margin-right: 20px;
+        z-index: 101;
+        transition: all 0.4s ease;
+        &:hover {
+          color: $lightThemeColor;
+        }
+      }
+    }
+
+    // nav {
+    //   flex: 3 1 300px;
+    //   margin-right: 15px;
+    //   font-weight: bold;
+    //   ul {
+    //     list-style-type: none;
+    //     display: flex;
+    //     justify-content: space-around;
+
+    //     li {
+    //       a {
+    //         text-decoration: none;
+    //         color: $themeColor;
+    //         font-size: 1.35rem;
+    //         transition: all 0.3s ease;
+    //         &:hover {
+    //           color: $hoverThemeColor;
+    //           border-bottom: 2px solid $hoverThemeColor;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+  }
+  @media screen and (max-width: 750px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      div.logo {
+        h1 {
+          font-size: 1.8rem;
+        }
+        a {
+          img {
+            width: 95px;
+          }
+        }
+      }
+      div.right-header {
+        .user-btn,
+        .cart-btn,
+        .menu-btn {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  div.overlay-menu {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: $webBackgroundColor;
+    overflow-y: auto;
+    z-index: 99;
+    transition: all 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .overlay-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100%;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: $lightThemeColor;
+
+      a {
+        text-decoration: none;
+        color: $themeColor;
+        font-size: 2rem;
+        margin: 10px 0;
+        display: block;
+        transition: all 0.3s ease;
+        background-color: transparent;
+
+        &:hover {
+          color: $webBackgroundColor;
+          transform: scale(1.1);
+        }
+      }
+
+      @media screen and (max-height: 400px) {
+        a {
+          font-size: 1.5rem;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+  section.title {
+    position: relative;
+    background: url(../images/unsplash/branch03.jpg) no-repeat 50% 55% / cover;
+    min-height: 70vh;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div.filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+    h2 {
+      font-size: 5rem;
+      color: $lightThemeColor;
+      z-index: 0;
+      text-align: center;
+    }
+  }
+  div.tableContainer {
+    width: 450px;
+    height: 80px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: $themeColor;
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px;
+    position: relative;
+    top: -40px;
+    div.item {
+      height: 100%;
+      width: 33%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      &:hover {
+        background-color: #db2724;
+      }
+      a {
+        text-align: center;
+        text-decoration: none;
+        color: $lightThemeColor;
+        font-size: 20px;
+      }
+    }
+  }
+  div.prices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 5rem 0;
+    h3 {
+      font-size: 2rem;
+      color: $lightThemeColor;
+      margin-bottom: 3rem;
+    }
+    div.wrap {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      width: 100%;
+      div.cart-group {
+        padding: 1rem;
+        background-color: $lightThemeColor;
+        width: 500px;
+        min-height: 300px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 30px;
+        h4 {
+          font-size: 1.5rem;
+          color: $themeColor;
+        }
+        div.content {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          div.opt {
+            display: flex;
+            gap: 1rem;
+            p {
+              font-size: 1.3rem;
+              color: $webBackgroundColor;
+            }
+            div.quantity-container {
+              display: flex;
+              align-items: center;
+              gap: 7px;
+              button {
+                width: 30px;
+                height: 30px;
+                font-size: 15px;
+                color: $webBackgroundColor;
+                cursor: pointer;
+              }
+              input {
+                width: 50px;
+                text-align: center;
+                font-size: 16px;
+              }
+            }
+          }
+        }
+        button.cart {
+          background-color: $themeColor;
+          color: $lightThemeColor;
+          border: none;
+          padding: 10px;
+          font-size: 1rem;
+          border-radius: 20px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            background-color: #db2724;
+          }
+        }
+      }
+    }
+  }
+  div.toast {
+    position: fixed;
+    top: 45px;
+    right: 30px;
+    background: $themeColor;
+    color: $lightThemeColor;
+    padding: 10px 20px;
+    border-radius: 5px 5px 20px 5px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    visibility: hidden;
+    font-size: 20px;
+  }
+  div.toast.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  section.footer {
+    padding: 5rem 3rem 1rem;
+    background-color: #385c6e;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      img {
+        width: 200px;
+      }
+      div.icons {
+        margin-top: 1.5rem;
+        display: flex;
+        .icon {
+          margin: 0 10px;
+          a {
+            text-decoration: none;
+            display: block;
+            svg {
+              width: 40px;
+
+              fill: $themeColor;
+            }
+            &:hover {
+              svg {
+                fill: $lightThemeColor;
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+    .subscribe {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      h2 {
+        font-size: 2rem;
+        color: $themeColor;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1rem;
+        color: $lightThemeColor;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        width: 300px; /* 設定寬度 */
+        padding: 10px; /* 內邊距 */
+        font-size: 1rem; /* 字體大小 */
+        border: 3px solid $lightThemeColor; /* 邊框顏色 */
+        border-radius: 10px; /* 圓角邊框 */
+        outline: none;
+        margin-bottom: 1rem;
+        &:focus {
+          border-color: $themeColor; /* 點擊時變色 */
+          box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+        }
+      }
+      button {
+        font-size: 1rem;
+        width: 100px;
+        border-radius: 10px;
+        background-color: $themeColor;
+        color: $lightThemeColor;
+        border: none;
+        // box-shadow: none;
+        padding: 5px;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+      }
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      min-width: 300px;
+      h2 {
+        font-size: 2rem;
+        color: $themeColor;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1rem;
+        color: $lightThemeColor;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

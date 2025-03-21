@@ -55,28 +55,34 @@ body header div.right-header .user-btn {
   cursor: pointer;
   font-size: 2rem;
   color: #ff2f2c;
-  transition: all 0.3s ease;
   margin-right: 20px;
+}
+body header div.right-header .user-btn a {
+  text-decoration: none;
 }
 body header div.right-header .user-btn a:visited {
   color: #ff2f2c;
 }
-body header div.right-header .user-btn a:visited:hover {
+body header div.right-header .user-btn a:hover {
   color: #f0eae7;
+  transition: all 0.4s ease;
 }
 body header div.right-header .cart-btn {
   display: block;
   cursor: pointer;
   font-size: 2rem;
   color: #ff2f2c;
-  transition: all 0.3s ease;
   margin-right: 20px;
+}
+body header div.right-header .cart-btn a {
+  text-decoration: none;
 }
 body header div.right-header .cart-btn a:visited {
   color: #ff2f2c;
 }
-body header div.right-header .cart-btn a:visited:hover {
+body header div.right-header .cart-btn a:hover {
   color: #f0eae7;
+  transition: all 0.4s ease;
 }
 body header div.right-header .menu-btn {
   display: block;
@@ -84,13 +90,10 @@ body header div.right-header .menu-btn {
   font-size: 2rem;
   color: #ff2f2c;
   margin-right: 20px;
-  transition: all 0.3s ease;
   z-index: 101;
+  transition: all 0.4s ease;
 }
 body header div.right-header .menu-btn:hover {
-  color: #f0eae7;
-}
-body header div.right-header .menu-btn.active {
   color: #f0eae7;
 }
 @media screen and (max-width: 750px) {
@@ -168,7 +171,7 @@ body main section.main-area1 {
   z-index: 0;
 }
 body main section.main-area1 div.filter {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   min-height: 80vh;
   position: absolute;
@@ -204,7 +207,7 @@ body main section.main-area1 div.info a {
   margin: 0 1rem 0;
   border-radius: 25px;
   display: block;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   align-self: flex-end;
 }
 body main section.main-area1 div.info a:hover {
@@ -240,6 +243,7 @@ body main section.main-area2 div.container div.item {
   align-items: flex-start;
   padding: 10px;
   flex: 0 1 250px;
+  transition: all 0.3s ease;
 }
 body main section.main-area2 div.container div.item:hover {
   border: 3px solid #ff2f2c;
@@ -270,14 +274,14 @@ body main section.main-area2 div.item-btn {
 body main section.main-area2 div.item-btn a {
   background-color: #ff2f2c;
   color: #f0eae7;
-  width: 100px;
+  width: 120px;
   text-align: center;
   text-decoration: none;
   padding: 0.25rem 0.5rem;
-  font-size: 1rem;
+  font-size: 18px;
   border-radius: 25px;
   display: block;
-  transition: all 0.2s ease;
+  transition: all 0.5s ease;
   align-self: flex-end;
 }
 body main section.main-area2 div.item-btn a:hover {

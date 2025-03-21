@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
       mainArea1.style.backgroundImage = images[currentImageIndex];
     }
 
-    // Change background every 5 seconds
-    setInterval(changeBackground, 4000);
+    // Change background every 3 seconds
+    setInterval(changeBackground, 3000);
   }
 });
 
