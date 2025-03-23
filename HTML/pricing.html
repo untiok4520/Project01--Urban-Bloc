@@ -11,18 +11,17 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./style/pricing.css" />
+    <link rel="stylesheet" href="../style/pricing.css" />
   </head>
   <body>
     <header>
       <div class="logo">
         <a href="./index.html">
-          <img src="./style/logo02.png" alt="" />
+          <img src="../style/logo02.png" alt="" />
         </a>
         <h1>Urban Bloc</h1>
       </div>
       <div class="right-header">
-        <!-- <a href="#">新手體驗</a> -->
         <div class="user-btn">
           <a href="#"><i class="fa-solid fa-user"></i></a>
         </div>
@@ -45,6 +44,40 @@
         <a href="#">關於我們</a>
       </div>
     </div>
+    <!-- 登入 Modal -->
+    <div class="login-modal" id="loginModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>會員登入</h2>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="email">電子郵件</label>
+              <input type="email" id="email" placeholder="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">密碼</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="password"
+                required
+              />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="login-btn">登入</button>
+              <div class="form-links">
+                <a href="#">忘記密碼？</a>
+                <a href="#">註冊會員</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <section class="title">
       <div class="filter"></div>
       <h2>入場費用</h2>
@@ -413,7 +446,7 @@
     <section class="footer">
       <div class="footer-logo">
         <div class="img">
-          <img src="./style/logo02.png" alt="" />
+          <img src="../style/logo02.png" alt="" />
         </div>
         <div class="icons">
           <div class="icon">
@@ -469,6 +502,6 @@
         <p><i class="fa-solid fa-phone"></i>04-12345678</p>
       </div>
     </section>
-    <script src="./price.js"></script>
+    <script src="../JS/price.js"></script>
   </body>
 </html>

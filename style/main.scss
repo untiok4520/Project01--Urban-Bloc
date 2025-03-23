@@ -21,6 +21,7 @@ $webBackgroundColor: #1f475a;
 body {
   background-color: $webBackgroundColor;
   overflow-x: hidden;
+  position: relative;
 
   header {
     display: flex;
@@ -58,10 +59,10 @@ body {
         display: block;
         cursor: pointer;
         font-size: 2rem;
-        color: $themeColor;
         margin-right: 20px;
         a {
           text-decoration: none;
+          color: $themeColor;
           &:visited {
             color: $themeColor;
           }
@@ -75,10 +76,10 @@ body {
         display: block;
         cursor: pointer;
         font-size: 2rem;
-        color: $themeColor;
         margin-right: 20px;
         a {
           text-decoration: none;
+          color: $themeColor;
         }
         a:visited {
           color: $themeColor;
@@ -101,30 +102,6 @@ body {
         }
       }
     }
-
-    // nav {
-    //   flex: 3 1 300px;
-    //   margin-right: 15px;
-    //   font-weight: bold;
-    //   ul {
-    //     list-style-type: none;
-    //     display: flex;
-    //     justify-content: space-around;
-
-    //     li {
-    //       a {
-    //         text-decoration: none;
-    //         color: $themeColor;
-    //         font-size: 1.35rem;
-    //         transition: all 0.3s ease;
-    //         &:hover {
-    //           color: $hoverThemeColor;
-    //           border-bottom: 2px solid $hoverThemeColor;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
   }
   @media screen and (max-width: 750px) {
     header {
@@ -167,37 +144,171 @@ body {
       opacity: 1;
       visibility: visible;
     }
+  }
 
-    .overlay-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100%;
-      padding: 20px;
-      overflow-y: auto;
+  // 登入 Modal 樣式
+  div.login-modal {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1f475a46;
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(5px);
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
       background-color: $lightThemeColor;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
 
-      a {
-        text-decoration: none;
-        color: $themeColor;
-        font-size: 2rem;
-        margin: 10px 0;
-        display: block;
-        transition: all 0.3s ease;
-        background-color: transparent;
-
-        &:hover {
+      .modal-header {
+        background-color: $themeColor;
+        color: $lightThemeColor;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+        button.close-modal {
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border-radius: 50%;
+          border: none;
+          width: 40px;
+          height: 40px;
           color: $webBackgroundColor;
-          transform: scale(1.1);
+          &:hover {
+            transform: scale(1.2);
+          }
         }
       }
+      .modal-body {
+        padding: 20px;
 
-      @media screen and (max-height: 400px) {
-        a {
-          font-size: 1.5rem;
-          margin: 10px 0;
+        form {
+          .form-group {
+            margin-bottom: 15px;
+
+            label {
+              display: block;
+              margin-bottom: 5px;
+              color: $webBackgroundColor;
+              font-size: 1rem;
+            }
+
+            input {
+              width: 100%;
+              padding: 10px;
+              border: 2px solid #ddd;
+              border-radius: 5px;
+              font-size: 1rem;
+              transition: border-color 0.3s ease;
+
+              &:focus {
+                border-color: $themeColor;
+                outline: none;
+              }
+            }
+          }
+          .form-actions {
+            margin-top: 20px;
+
+            .login-btn {
+              background-color: $themeColor;
+              color: $lightThemeColor;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 20px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              width: 100%;
+
+              &:hover {
+                background-color: darken($themeColor, 20%);
+              }
+            }
+            .form-links {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 15px;
+
+              a {
+                color: $webBackgroundColor;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: color 0.3s ease;
+
+                &:hover {
+                  color: $themeColor;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
         }
+      }
+    }
+
+    &.active .modal-content {
+      transform: scale(1);
+    }
+  }
+
+  // 當 modal 開啟時，禁止背景滾動
+  body.modal-open {
+    overflow: hidden;
+  }
+  //overlay-menu
+  .overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: $lightThemeColor;
+
+    a {
+      text-decoration: none;
+      color: $themeColor;
+      font-size: 2rem;
+      margin: 10px 0;
+      display: block;
+      transition: all 0.3s ease;
+      background-color: transparent;
+
+      &:hover {
+        color: $webBackgroundColor;
+        transform: scale(1.1);
+      }
+    }
+
+    @media screen and (max-height: 400px) {
+      a {
+        font-size: 1.5rem;
+        margin: 10px 0;
       }
     }
   }

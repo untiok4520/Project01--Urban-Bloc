@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const menuBtn = document.querySelector(".menu-btn");
   const overlayMenu = document.querySelector(".overlay-menu");
-  const mainArea1 = document.querySelector(".main-area1");
-
+  const userBtn = document.querySelector(".user-btn");
+  const loginModal = document.querySelector("#loginModal");
+  const closeModalBtn = document.querySelector(".close-modal");
+  // 確保 modal 初始狀態為隱藏
+  if (loginModal) {
+    loginModal.style.display = "none";
+    loginModal.classList.remove("active");
+  }
   // Menu button functionality
   if (menuBtn && overlayMenu) {
     menuBtn.addEventListener("click", function (e) {
@@ -19,6 +25,48 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     console.error("Menu button or overlay menu not found");
   }
+
+  // 登入 Modal 功能
+  if (userBtn && loginModal) {
+    userBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      loginModal.style.display = "flex";
+      // 使用 setTimeout 確保 display: flex 已經應用後再添加 active 類
+      setTimeout(() => {
+        loginModal.classList.add("active");
+        document.body.classList.add("modal-open");
+        disableScroll();
+      }, 10);
+    });
+  }
+
+  // 關閉 Modal 功能
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener("click", function () {
+      closeModal();
+    });
+  }
+
+  // 點擊 Modal 外部關閉 Modal
+  if (loginModal) {
+    loginModal.addEventListener("click", function (e) {
+      if (e.target === loginModal) {
+        closeModal();
+      }
+    });
+  }
+
+  // 關閉 Modal 的函數
+  function closeModal() {
+    loginModal.classList.remove("active");
+    document.body.classList.remove("modal-open");
+    enableScroll();
+    // 等待過渡效果完成後隱藏 modal
+    setTimeout(() => {
+      loginModal.style.display = "none";
+    }, 300); // 300ms 與 CSS 過渡時間相同
+  }
+
   // 打開menu時鎖定滾動
   function disableScroll() {
     // 保存當前滾動位置
@@ -46,13 +94,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 //計數器
-// function changeQuantity(amount) {
-//   let input = document.getElementById("quantity");
-//   let newValue = parseInt(input.value) + amount;
-//   if (newValue >= parseInt(input.min)) {
-//     input.value = newValue;
-//   }
-// }
 function changeQuantity(event, amount) {
   let container = event.target.parentElement; // 找到點擊按鈕的父容器
   let input = container.querySelector("input"); // 找到該容器內的 input

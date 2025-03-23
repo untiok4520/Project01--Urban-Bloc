@@ -11,18 +11,17 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="stylesheet" href="../style/main.css" />
   </head>
   <body>
     <header>
       <div class="logo">
         <a href="#">
-          <img src="./style/logo02.png" alt="" />
+          <img src="../style/logo02.png" alt="" />
         </a>
         <h1>Urban Bloc</h1>
       </div>
       <div class="right-header">
-        <!-- <a href="#">新手體驗</a> -->
         <div class="user-btn">
           <a href="#"><i class="fa-solid fa-user"></i></a>
         </div>
@@ -39,12 +38,47 @@
 
     <div class="overlay-menu">
       <div class="overlay-content">
-        <a href="./pricing.html">入場費用</a>
+        <a href="../HTML/pricing.html">入場費用</a>
         <a href="#">課程預約</a>
         <a href="#">常見問題</a>
         <a href="#">關於我們</a>
       </div>
     </div>
+
+    <!-- 登入 Modal -->
+    <div class="login-modal" id="loginModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>會員登入</h2>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="email">電子郵件</label>
+              <input type="email" id="email" placeholder="email" required />
+            </div>
+            <div class="form-group">
+              <label for="password">密碼</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="password"
+                required
+              />
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="login-btn">登入</button>
+              <div class="form-links">
+                <a href="#">忘記密碼？</a>
+                <a href="#">註冊會員</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- main -->
     <main>
       <section class="main-area1">
         <!-- <div class="img">
@@ -349,6 +383,6 @@
         </div>
       </section>
     </main>
-    <script src="./app.js"></script>
+    <script src="../JS/app.js"></script>
   </body>
 </html>
