@@ -367,6 +367,21 @@ body .form .form-group .match-indicator {
 body .form .form-group .match-indicator.visible {
   display: block;
 }
+body .form button {
+  background-color: #ff2f2c;
+  color: #f0eae7;
+  border: none;
+  border-radius: 15px;
+  padding: 12px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+body .form button:hover {
+  background-color: #f0eae7;
+  color: #ff2f2c;
+}
 body section.footer {
   padding: 5rem 3rem 1rem;
   background-color: #385c6e;
@@ -467,19 +482,4 @@ body section.footer .contact p {
   font-size: 1rem;
   color: #f0eae7;
   margin-bottom: 0.5rem;
-}
-body button {
-  background-color: #ff2f2c;
-  color: #f0eae7;
-  border: none;
-  border-radius: 15px;
-  padding: 12px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  width: 100%;
-  transition: all 0.5s ease;
-}
-body button:hover {
-  background-color: #f0eae7;
-  color: #ff2f2c;
 }/*# sourceMappingURL=registration.css.map */

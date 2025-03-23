@@ -1,0 +1,421 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "webFont";
+  src: url(./GenJyuuGothicX-P-Heavy.ttf);
+}
+@font-face {
+  font-family: "englishFonts";
+  src: url(./NicoMoji-Regular.ttf);
+}
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "englishFonts", "webFont", DFkai-sb, serif;
+}
+
+body {
+  background-color: #1f475a;
+  overflow-x: hidden;
+}
+body header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  z-index: 100;
+  padding: 15px 20px 15px 15px;
+  min-height: 100px;
+}
+body header div.logo {
+  display: flex;
+  flex: 2 0;
+  align-items: center;
+  margin: 10px;
+}
+body header div.logo a {
+  display: inline-block;
+}
+body header div.logo a img {
+  width: 110px;
+}
+body header div.logo h1 {
+  font-size: 3rem;
+  color: #ff2f2c;
+  padding: 0 10px;
+}
+body header div.right-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+body header div.right-header .user-btn {
+  display: block;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 20px;
+}
+body header div.right-header .user-btn a {
+  color: #ff2f2c;
+  text-decoration: none;
+}
+body header div.right-header .user-btn a:visited {
+  color: #ff2f2c;
+}
+body header div.right-header .user-btn a:hover {
+  color: #f0eae7;
+  transition: all 0.4s ease;
+}
+body header div.right-header .cart-btn {
+  display: block;
+  cursor: pointer;
+  font-size: 2rem;
+  margin-right: 20px;
+}
+body header div.right-header .cart-btn a {
+  text-decoration: none;
+  color: #ff2f2c;
+}
+body header div.right-header .cart-btn a:visited {
+  color: #ff2f2c;
+}
+body header div.right-header .cart-btn a:hover {
+  color: #f0eae7;
+  transition: all 0.4s ease;
+}
+body header div.right-header .menu-btn {
+  display: block;
+  cursor: pointer;
+  font-size: 2rem;
+  color: #ff2f2c;
+  margin-right: 20px;
+  z-index: 101;
+  transition: all 0.4s ease;
+}
+body header div.right-header .menu-btn:hover {
+  color: #f0eae7;
+}
+@media screen and (max-width: 750px) {
+  body header {
+    flex-direction: column;
+    align-items: center;
+  }
+  body header div.logo h1 {
+    font-size: 1.8rem;
+  }
+  body header div.logo a img {
+    width: 95px;
+  }
+  body header div.right-header .user-btn,
+  body header div.right-header .cart-btn,
+  body header div.right-header .menu-btn {
+    font-size: 1.5rem;
+  }
+}
+body div.overlay-menu {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background-color: #1f475a;
+  overflow-y: auto;
+  z-index: 99;
+  transition: all 0.5s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+body div.overlay-menu.active {
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+}
+body div.overlay-menu .overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100%;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f0eae7;
+}
+body div.overlay-menu .overlay-content a {
+  text-decoration: none;
+  color: #ff2f2c;
+  font-size: 2rem;
+  margin: 10px 0;
+  display: block;
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+body div.overlay-menu .overlay-content a:hover {
+  color: #1f475a;
+  transform: scale(1.1);
+}
+@media screen and (max-height: 400px) {
+  body div.overlay-menu .overlay-content a {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+}
+body div.login-modal {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(31, 71, 90, 0.2745098039);
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+body div.login-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+body div.login-modal .modal-content {
+  background-color: #f0eae7;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transform: scale(0.8);
+  transition: transform 0.3s ease;
+}
+body div.login-modal .modal-content .modal-header {
+  background-color: #ff2f2c;
+  color: #f0eae7;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body div.login-modal .modal-content .modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+body div.login-modal .modal-content .modal-header button.close-modal {
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  color: #1f475a;
+  background-color: #f0eae7;
+}
+body div.login-modal .modal-content .modal-header button.close-modal:hover {
+  transform: scale(1.2);
+}
+body div.login-modal .modal-content .modal-body {
+  padding: 20px;
+}
+body div.login-modal .modal-content .modal-body form .form-group {
+  margin-bottom: 15px;
+}
+body div.login-modal .modal-content .modal-body form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #1f475a;
+  font-size: 1rem;
+}
+body div.login-modal .modal-content .modal-body form .form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+body div.login-modal .modal-content .modal-body form .form-group input:focus {
+  border-color: #ff2f2c;
+  outline: none;
+}
+body div.login-modal .modal-content .modal-body form .form-actions {
+  margin-top: 20px;
+}
+body div.login-modal .modal-content .modal-body form .form-actions .login-btn {
+  background-color: #ff2f2c;
+  color: #f0eae7;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+body div.login-modal .modal-content .modal-body form .form-actions .login-btn:hover {
+  background-color: #c50300;
+}
+body div.login-modal .modal-content .modal-body form .form-actions .form-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+body div.login-modal .modal-content .modal-body form .form-actions .form-links a {
+  color: #1f475a;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+body div.login-modal .modal-content .modal-body form .form-actions .form-links a:hover {
+  color: #ff2f2c;
+  text-decoration: underline;
+}
+body div.login-modal.active .modal-content {
+  transform: scale(1);
+}
+body body.modal-open {
+  overflow: hidden;
+}
+body section.title {
+  position: relative;
+  background: url(../images/freepik/full-shot-woman-climbing-wall.jpg) no-repeat 50% 40%/cover;
+  min-height: 75vh;
+  z-index: -2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body section.title div.filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+body section.title h2 {
+  font-size: 5rem;
+  color: #ff2f2c;
+  z-index: 0;
+  text-align: center;
+}
+body main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+body main h2 {
+  font-size: 2.5rem;
+  color: #f0eae7;
+}
+body main iframe {
+  width: 980px;
+  height: 530px;
+  margin: 1rem auto;
+}
+body section.footer {
+  padding: 5rem 3rem 1rem;
+  background-color: #385c6e;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+body section.footer .footer-logo {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+body section.footer .footer-logo img {
+  width: 200px;
+}
+body section.footer .footer-logo div.icons {
+  margin-top: 1.5rem;
+  display: flex;
+}
+body section.footer .footer-logo div.icons .icon {
+  margin: 0 10px;
+}
+body section.footer .footer-logo div.icons .icon a {
+  text-decoration: none;
+  display: block;
+}
+body section.footer .footer-logo div.icons .icon a svg {
+  width: 40px;
+  fill: #ff2f2c;
+}
+body section.footer .footer-logo div.icons .icon a:hover svg {
+  fill: #f0eae7;
+  transform: scale(1.1);
+}
+body section.footer .subscribe {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+body section.footer .subscribe h2 {
+  font-size: 2rem;
+  color: #ff2f2c;
+  margin-bottom: 0.5rem;
+}
+body section.footer .subscribe p {
+  font-size: 1rem;
+  color: #f0eae7;
+  margin-bottom: 0.5rem;
+}
+body section.footer .subscribe input {
+  width: 300px; /* 設定寬度 */
+  padding: 10px; /* 內邊距 */
+  font-size: 1rem; /* 字體大小 */
+  border: 3px solid #f0eae7; /* 邊框顏色 */
+  border-radius: 10px; /* 圓角邊框 */
+  outline: none;
+  margin-bottom: 1rem;
+}
+body section.footer .subscribe input:focus {
+  border-color: #ff2f2c; /* 點擊時變色 */
+  box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+}
+body section.footer .subscribe button {
+  font-size: 1rem;
+  width: 100px;
+  border-radius: 10px;
+  background-color: #ff2f2c;
+  color: #f0eae7;
+  border: none;
+  padding: 5px;
+}
+body section.footer .subscribe button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+body section.footer .contact {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  min-width: 300px;
+}
+body section.footer .contact h2 {
+  font-size: 2rem;
+  color: #ff2f2c;
+  margin-bottom: 0.5rem;
+}
+body section.footer .contact p {
+  font-size: 1rem;
+  color: #f0eae7;
+  margin-bottom: 0.5rem;
+}/*# sourceMappingURL=firstimer.css.map */

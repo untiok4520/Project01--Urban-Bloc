@@ -26,6 +26,15 @@ document.addEventListener("DOMContentLoaded", function () {
         enableScroll();
       }
     });
+    // 自動關閉 Menu 當點擊內部連結
+    const menuLinks = overlayMenu.querySelectorAll("a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", function () {
+        overlayMenu.classList.remove("active");
+        menuBtn.classList.remove("active");
+        enableScroll(); // 關閉後恢復滾動
+      });
+    });
   } else {
     console.error("Menu button or overlay menu not found");
   }

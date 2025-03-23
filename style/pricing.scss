@@ -448,6 +448,39 @@ body {
       }
     }
   }
+  // 購物車
+  // .cartTab {
+  //   width: 400px;
+  //   background-color: $lightThemeColor;
+  //   color: $webBackgroundColor;
+  //   position: fixed;
+  //   top: 0;
+  //   right: 0;
+  //   bottom: 0;
+  //   display: grid;
+  //   grid-template-rows: 70px 1fr 70px;
+  //   box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+  //   h3 {
+  //     padding: 20px;
+  //     margin: 0;
+  //     font-size: 2rem;
+  //     color: $themeColor;
+  //   }
+  //   div.btn {
+  //     display: grid;
+  //     grid-template-columns: repeat(2, 1fr);
+  //     button {
+  //       background-color: $themeColor;
+  //       color: $lightThemeColor;
+  //       border: none;
+  //       cursor: pointer;
+  //       font-size: 1rem;
+  //     }
+  //     button.close {
+  //       background-color: #576165;
+  //     }
+  //   }
+  // }
   div.toast {
     position: fixed;
     top: 45px;
