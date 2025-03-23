@@ -1,0 +1,495 @@
+$themeColor: #ff2f2c;
+$lightThemeColor: #f0eae7;
+$webBackgroundColor: #1f475a;
+
+@font-face {
+  font-family: "webFont";
+  src: url(./GenJyuuGothicX-P-Heavy.ttf);
+}
+@font-face {
+  font-family: "englishFonts";
+  src: url(./NicoMoji-Regular.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "englishFonts", "webFont", DFkai-sb, serif;
+}
+body {
+  background-color: $webBackgroundColor;
+  overflow-x: hidden;
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    z-index: 100;
+    padding: 15px 20px 15px 15px;
+    // margin-bottom: 10px;
+    min-height: 100px;
+
+    div.logo {
+      display: flex;
+      flex: 2 0;
+      align-items: center;
+      margin: 10px;
+      a {
+        display: inline-block;
+        img {
+          width: 110px;
+        }
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: $themeColor;
+        padding: 0 10px;
+      }
+    }
+    div.right-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 1;
+      .user-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        margin-right: 20px;
+        a {
+          color: $themeColor;
+          text-decoration: none;
+          &:visited {
+            color: $themeColor;
+          }
+        }
+        a:hover {
+          color: $lightThemeColor;
+          transition: all 0.4s ease;
+        }
+      }
+      .cart-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        margin-right: 20px;
+        a {
+          text-decoration: none;
+          color: $themeColor;
+        }
+        a:visited {
+          color: $themeColor;
+        }
+        a:hover {
+          color: $lightThemeColor;
+          transition: all 0.4s ease;
+        }
+      }
+      .menu-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: $themeColor;
+        margin-right: 20px;
+        z-index: 101;
+        transition: all 0.4s ease;
+        &:hover {
+          color: $lightThemeColor;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 750px) {
+    header {
+      flex-direction: column;
+      align-items: center;
+      div.logo {
+        h1 {
+          font-size: 1.8rem;
+        }
+        a {
+          img {
+            width: 95px;
+          }
+        }
+      }
+      div.right-header {
+        .user-btn,
+        .cart-btn,
+        .menu-btn {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+  div.overlay-menu {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: $webBackgroundColor;
+    overflow-y: auto;
+    z-index: 99;
+    transition: all 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .overlay-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100%;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: $lightThemeColor;
+
+      a {
+        text-decoration: none;
+        color: $themeColor;
+        font-size: 2rem;
+        margin: 10px 0;
+        display: block;
+        transition: all 0.3s ease;
+        background-color: transparent;
+
+        &:hover {
+          color: $webBackgroundColor;
+          transform: scale(1.1);
+        }
+      }
+
+      @media screen and (max-height: 400px) {
+        a {
+          font-size: 1.5rem;
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+  // 登入 Modal 樣式
+  div.login-modal {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1f475a46;
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(5px);
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background-color: $lightThemeColor;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+
+      .modal-header {
+        background-color: $themeColor;
+        color: $lightThemeColor;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+        button.close-modal {
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border-radius: 50%;
+          border: none;
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          color: $webBackgroundColor;
+          background-color: $lightThemeColor;
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+      .modal-body {
+        padding: 20px;
+
+        form {
+          .form-group {
+            margin-bottom: 15px;
+
+            label {
+              display: block;
+              margin-bottom: 5px;
+              color: $webBackgroundColor;
+              font-size: 1rem;
+            }
+
+            input {
+              width: 100%;
+              padding: 10px;
+              border: 2px solid #ddd;
+              border-radius: 5px;
+              font-size: 1rem;
+              transition: border-color 0.3s ease;
+
+              &:focus {
+                border-color: $themeColor;
+                outline: none;
+              }
+            }
+          }
+          .form-actions {
+            margin-top: 20px;
+
+            .login-btn {
+              background-color: $themeColor;
+              color: $lightThemeColor;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 20px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              width: 100%;
+
+              &:hover {
+                background-color: darken($themeColor, 20%);
+              }
+            }
+            .form-links {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 15px;
+
+              a {
+                color: $webBackgroundColor;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: color 0.3s ease;
+
+                &:hover {
+                  color: $themeColor;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.active .modal-content {
+      transform: scale(1);
+    }
+  }
+  // 當 modal 開啟時，禁止背景滾動
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  section.title {
+    position: relative;
+    background: url(../images/freepik/full-shot-woman-climbing-wall.jpg)
+      no-repeat 50% 40% / cover;
+    min-height: 75vh;
+    z-index: -2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div.filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+    h2 {
+      font-size: 5rem;
+      color: $lightThemeColor;
+      z-index: 0;
+      text-align: center;
+    }
+  }
+  main {
+    .accordian {
+      margin: 60px auto;
+      width: 800px;
+      li {
+        list-style: none;
+        width: 100%;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        background: $lightThemeColor;
+        box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.3);
+        label {
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          font-size: 1.5rem;
+          color: $themeColor;
+          cursor: pointer;
+          &::before {
+            content: "+";
+            margin-right: 10px;
+            font-size: 36px;
+            font-weight: 600;
+          }
+        }
+        input[type="radio"] {
+          display: none;
+        }
+        .content {
+          color: $webBackgroundColor;
+          padding: 0 10px;
+          line-height: 26px;
+          max-height: 0;
+          overflow: hidden;
+          transition: all 0.3s ease;
+        }
+        input[type="radio"]:checked + label + .content {
+          max-height: 400px;
+          padding: 10px 10px 20px;
+        }
+        input[type="radio"]:checked + label::before {
+          content: "－";
+          margin-right: 10px;
+          font-size: 24px;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  //footer
+  section.footer {
+    padding: 5rem 3rem 1rem;
+    background-color: #385c6e;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    .footer-logo {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      img {
+        width: 200px;
+      }
+      div.icons {
+        margin-top: 1.5rem;
+        display: flex;
+        .icon {
+          margin: 0 10px;
+          a {
+            text-decoration: none;
+            display: block;
+            svg {
+              width: 40px;
+
+              fill: $themeColor;
+            }
+            &:hover {
+              svg {
+                fill: $lightThemeColor;
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+    }
+    .subscribe {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      h2 {
+        font-size: 2rem;
+        color: $themeColor;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1rem;
+        color: $lightThemeColor;
+        margin-bottom: 0.5rem;
+      }
+      input {
+        width: 300px; /* 設定寬度 */
+        padding: 10px; /* 內邊距 */
+        font-size: 1rem; /* 字體大小 */
+        border: 3px solid $lightThemeColor; /* 邊框顏色 */
+        border-radius: 10px; /* 圓角邊框 */
+        outline: none;
+        margin-bottom: 1rem;
+        &:focus {
+          border-color: $themeColor; /* 點擊時變色 */
+          box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+        }
+      }
+      button {
+        font-size: 1rem;
+        width: 100px;
+        border-radius: 10px;
+        background-color: $themeColor;
+        color: $lightThemeColor;
+        border: none;
+        // box-shadow: none;
+        padding: 5px;
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+        }
+      }
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      flex: 0 1;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem;
+      min-width: 300px;
+      h2 {
+        font-size: 2rem;
+        color: $themeColor;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1rem;
+        color: $lightThemeColor;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}

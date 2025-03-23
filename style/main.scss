@@ -394,7 +394,7 @@ body {
         margin: 0 1rem 1rem;
         text-align: center;
       }
-      div.container {
+      div.news-container {
         width: 100vw;
         display: flex;
         flex-wrap: wrap;
@@ -431,10 +431,22 @@ body {
             width: 100%;
           }
         }
+        div.content-full {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.5s ease-out;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          &.expanded {
+            max-height: 500px;
+          }
+        }
       }
       div.item-btn {
         margin: 2rem;
-        a {
+        button {
           background-color: $themeColor;
           color: $lightThemeColor;
           width: 120px;
@@ -443,7 +455,7 @@ body {
           padding: 0.25rem 0.5rem;
           font-size: 18px;
           border-radius: 25px;
-          display: block;
+          border: none;
           transition: all 0.5s ease;
           align-self: flex-end;
           &:hover {
@@ -480,8 +492,8 @@ body {
             display: flex;
             transition: transform 0.3s ease;
             .card {
-              flex: 0 0 300px;
-              max-width: 300px;
+              flex: 0 0 320px;
+              max-width: 320px;
               height: 400px;
               background-color: $lightThemeColor;
               margin: 0 15px;
@@ -595,6 +607,23 @@ body {
           height: 350px;
         }
       }
+    }
+    div.toast {
+      position: fixed;
+      bottom: 45px;
+      right: 80px;
+      background: rgb(56, 185, 106);
+      color: $lightThemeColor;
+      padding: 10px 20px;
+      border-radius: 5px 5px 20px 5px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      visibility: hidden;
+      font-size: 24px;
+    }
+    div.toast.show {
+      opacity: 1;
+      visibility: visible;
     }
     section.footer {
       padding: 5rem 3rem 1rem;

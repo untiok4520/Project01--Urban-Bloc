@@ -196,3 +196,34 @@ document.addEventListener("DOMContentLoaded", function () {
     initIndicators();
   });
 });
+
+//瞭解更多收合按鈕
+document.addEventListener("DOMContentLoaded", function () {
+  const toggleBtn = document.getElementById("toggleBtn");
+  const fullContent = document.getElementById("fullContent");
+
+  toggleBtn.addEventListener("click", function () {
+    fullContent.classList.toggle("expanded");
+
+    if (fullContent.classList.contains("expanded")) {
+      toggleBtn.textContent = "收合";
+    } else {
+      toggleBtn.textContent = "瞭解更多";
+    }
+  });
+});
+//訂閱按鈕toast
+document.addEventListener("DOMContentLoaded", function () {
+  const subbtn = document.getElementById("subBtn");
+  const emailInput = document.getElementById("subEmail");
+  const toast = document.getElementById("subscribeToast");
+
+  subbtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    toast.classList.add("show");
+    emailInput.value = "";
+    setTimeout(function () {
+      toast.classList.remove("show");
+    }, 2000);
+  });
+});

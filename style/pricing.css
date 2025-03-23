@@ -420,14 +420,14 @@ body div.toast {
   position: fixed;
   top: 45px;
   right: 30px;
-  background: #ff2f2c;
+  background: rgb(56, 185, 106);
   color: #f0eae7;
   padding: 10px 20px;
   border-radius: 5px 5px 20px 5px;
   opacity: 0;
   transition: opacity 0.5s;
   visibility: hidden;
-  font-size: 20px;
+  font-size: 24px;
 }
 body div.toast.show {
   opacity: 1;

@@ -349,13 +349,13 @@ body main section.main-area2 h2 {
   margin: 0 1rem 1rem;
   text-align: center;
 }
-body main section.main-area2 div.container {
+body main section.main-area2 div.news-container {
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-body main section.main-area2 div.container div.item {
+body main section.main-area2 div.news-container div.item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -364,33 +364,45 @@ body main section.main-area2 div.container div.item {
   flex: 0 1 250px;
   transition: all 0.3s ease;
 }
-body main section.main-area2 div.container div.item:hover {
+body main section.main-area2 div.news-container div.item:hover {
   border: 3px solid #ff2f2c;
   border-radius: 20px;
   padding: 0.7rem;
 }
-body main section.main-area2 div.container div.item a {
+body main section.main-area2 div.news-container div.item a {
   text-decoration: none;
 }
-body main section.main-area2 div.container div.item a:visited {
+body main section.main-area2 div.news-container div.item a:visited {
   color: #f0eae7;
 }
-body main section.main-area2 div.container div.item a p {
+body main section.main-area2 div.news-container div.item a p {
   font-size: 0.8rem;
   color: #ff2f2c;
 }
-body main section.main-area2 div.container div.item a h3 {
+body main section.main-area2 div.news-container div.item a h3 {
   color: #f0eae7;
   font-size: 1.2rem;
 }
-body main section.main-area2 div.container div.item img {
+body main section.main-area2 div.news-container div.item img {
   border-radius: 20px;
   width: 100%;
+}
+body main section.main-area2 div.news-container div.content-full {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+body main section.main-area2 div.news-container div.content-full.expanded {
+  max-height: 500px;
 }
 body main section.main-area2 div.item-btn {
   margin: 2rem;
 }
-body main section.main-area2 div.item-btn a {
+body main section.main-area2 div.item-btn button {
   background-color: #ff2f2c;
   color: #f0eae7;
   width: 120px;
@@ -399,11 +411,11 @@ body main section.main-area2 div.item-btn a {
   padding: 0.25rem 0.5rem;
   font-size: 18px;
   border-radius: 25px;
-  display: block;
+  border: none;
   transition: all 0.5s ease;
   align-self: flex-end;
 }
-body main section.main-area2 div.item-btn a:hover {
+body main section.main-area2 div.item-btn button:hover {
   transform: scale(1.2);
   color: #ff2f2c;
   background-color: #f0eae7;
@@ -437,8 +449,8 @@ body main section.main-area3 .slider-container .card-slider .card-wrapper {
   transition: transform 0.3s ease;
 }
 body main section.main-area3 .slider-container .card-slider .card-wrapper .card {
-  flex: 0 0 300px;
-  max-width: 300px;
+  flex: 0 0 320px;
+  max-width: 320px;
   height: 400px;
   background-color: #f0eae7;
   margin: 0 15px;
@@ -543,6 +555,23 @@ body main section.main-area3 .slider-container .slider-control i {
     flex: 0 0 calc(100% - 30px);
     height: 350px;
   }
+}
+body main div.toast {
+  position: fixed;
+  bottom: 45px;
+  right: 80px;
+  background: rgb(56, 185, 106);
+  color: #f0eae7;
+  padding: 10px 20px;
+  border-radius: 5px 5px 20px 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  visibility: hidden;
+  font-size: 24px;
+}
+body main div.toast.show {
+  opacity: 1;
+  visibility: visible;
 }
 body main section.footer {
   padding: 5rem 3rem 1rem;
