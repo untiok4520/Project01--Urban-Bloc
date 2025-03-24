@@ -420,6 +420,23 @@ body section.footer .footer-logo div.icons .icon a:hover svg {
   fill: #f0eae7;
   transform: scale(1.1);
 }
+body section.footer div.subtoast {
+  position: fixed;
+  bottom: 45px;
+  right: 80px;
+  background: rgb(56, 185, 106);
+  color: #f0eae7;
+  padding: 10px 20px;
+  border-radius: 5px 5px 20px 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  visibility: hidden;
+  font-size: 24px;
+}
+body section.footer div.subtoast.show {
+  opacity: 1;
+  visibility: visible;
+}
 body section.footer .subscribe {
   display: flex;
   flex-direction: column;

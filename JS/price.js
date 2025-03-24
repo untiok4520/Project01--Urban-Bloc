@@ -311,3 +311,19 @@ function showToast(message) {
     toast.classList.remove("show");
   }, 2000); // 2 秒後隱藏
 }
+
+//訂閱按鈕toast
+document.addEventListener("DOMContentLoaded", function () {
+  const subbtn = document.getElementById("subBtn");
+  const emailInput = document.getElementById("subEmail");
+  const toast = document.getElementById("subscribeToast");
+
+  subbtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    toast.classList.add("show");
+    emailInput.value = "";
+    setTimeout(function () {
+      toast.classList.remove("show");
+    }, 2000);
+  });
+});

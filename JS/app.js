@@ -200,12 +200,12 @@ document.addEventListener("DOMContentLoaded", function () {
 //瞭解更多收合按鈕
 document.addEventListener("DOMContentLoaded", function () {
   const toggleBtn = document.getElementById("toggleBtn");
-  const fullContent = document.getElementById("fullContent");
+  const newsContainer = document.getElementById("newsContainer");
 
   toggleBtn.addEventListener("click", function () {
-    fullContent.classList.toggle("expanded");
+    newsContainer.classList.toggle("expanded");
 
-    if (fullContent.classList.contains("expanded")) {
+    if (newsContainer.classList.contains("expanded")) {
       toggleBtn.textContent = "收合";
     } else {
       toggleBtn.textContent = "瞭解更多";
