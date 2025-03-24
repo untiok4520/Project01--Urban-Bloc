@@ -72,6 +72,7 @@ body header div.right-header .cart-btn {
   cursor: pointer;
   font-size: 2rem;
   margin-right: 20px;
+  position: relative;
 }
 body header div.right-header .cart-btn a {
   color: #ff2f2c;
@@ -84,13 +85,28 @@ body header div.right-header .cart-btn a:hover {
   color: #f0eae7;
   transition: all 0.4s ease;
 }
+body header div.right-header .cart-btn span {
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: #d43633;
+  color: #f0eae7;
+  border-radius: 50%;
+  position: absolute;
+  top: -12px;
+  right: -8px;
+  visibility: hidden;
+}
 body header div.right-header .menu-btn {
   display: block;
   cursor: pointer;
   font-size: 2rem;
   color: #ff2f2c;
   margin-right: 20px;
-  z-index: 101;
+  z-index: 100;
   transition: all 0.4s ease;
 }
 body header div.right-header .menu-btn:hover {
@@ -416,10 +432,101 @@ body div.prices div.wrap div.cart-group button.cart {
 body div.prices div.wrap div.cart-group button.cart:hover {
   background-color: #db2724;
 }
+body .cartContainer {
+  width: 400px;
+  background-color: #f0eae7;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: 70px 1fr 70px;
+  box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 101;
+  transition: all 0.5s ease;
+}
+body .cartContainer.showCart {
+  inset: 0 0 0 auto;
+}
+body .cartContainer h3 {
+  padding: 20px;
+  margin: 0;
+  font-size: 2rem;
+  color: #ff2f2c;
+}
+body .cartContainer .cartList {
+  overflow: auto;
+}
+body .cartContainer .cartList .cart-box {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+body .cartContainer .cartList .cart-box .name {
+  font-size: 1rem;
+  color: #1f475a;
+}
+body .cartContainer .cartList .cart-box .totalPrice {
+  font-size: 1rem;
+  color: #1f475a;
+}
+body .cartContainer .cartList .cart-box .quantity {
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+body .cartContainer .cartList .cart-box .quantity span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
+  background-color: #ff2f2c;
+  color: #f0eae7;
+  border-radius: 50%;
+  cursor: pointer;
+}
+body .cartContainer .cartList .cart-box .quantity span:nth-child(2) {
+  background-color: transparent;
+  color: #ff2f2c;
+  font-size: 20px;
+}
+body .cartContainer .total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+body .cartContainer .total .total-title {
+  font-size: 20px;
+  color: #ff2f2c;
+}
+body .cartContainer .total .total-price {
+  font-size: 20px;
+  color: #ff2f2c;
+}
+body .cartContainer div.btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+body .cartContainer div.btn button {
+  background-color: #ff2f2c;
+  color: #f0eae7;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 50px;
+}
+body .cartContainer div.btn button.close {
+  background-color: #576165;
+  height: 50px;
+}
 body div.toast {
   position: fixed;
   top: 45px;
-  right: 30px;
+  left: 30px;
   background: rgb(56, 185, 106);
   color: #f0eae7;
   padding: 10px 20px;
@@ -432,6 +539,7 @@ body div.toast {
 body div.toast.show {
   opacity: 1;
   visibility: visible;
+  z-index: 102;
 }
 body section.footer {
   padding: 5rem 3rem 1rem;
