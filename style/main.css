@@ -359,7 +359,7 @@ body main section.main-area2 div.news-container {
   transition: max-height 0.5s ease-out;
 }
 body main section.main-area2 div.news-container.expanded {
-  max-height: 800px;
+  max-height: 1800px;
 }
 body main section.main-area2 div.news-container div.item {
   display: flex;
