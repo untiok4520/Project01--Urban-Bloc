@@ -456,12 +456,14 @@ body .cartContainer h3 {
 }
 body .cartContainer .cartList {
   overflow: auto;
+  margin-top: 10px;
 }
 body .cartContainer .cartList .cart-box {
   display: flex;
   justify-content: space-around;
   text-align: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 body .cartContainer .cartList .cart-box .name {
   font-size: 1rem;

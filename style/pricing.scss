@@ -488,13 +488,13 @@ body {
     }
     .cartList {
       overflow: auto;
-      // position: relative;
-      // top: -25%;
+      margin-top: 10px;
       .cart-box {
         display: flex;
         justify-content: space-around;
         text-align: center;
         align-items: center;
+        margin-bottom: 10px;
         .name {
           font-size: 1rem;
           color: $webBackgroundColor;
