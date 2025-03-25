@@ -1,0 +1,713 @@
+@font-face {
+  font-family: "webFont";
+  src: url(./GenJyuuGothicX-P-Heavy.ttf);
+}
+@font-face {
+  font-family: "englishFonts";
+  src: url(./NicoMoji-Regular.ttf);
+}
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "englishFonts", "webFont", DFkai-sb, serif;
+}
+
+// 顏色變數
+$primary-color: #1f475a;
+$secondary-color: #ff2f2c;
+$light-color: #f0eae7;
+$dark-blue: #385c6e;
+
+body {
+  background-color: $primary-color;
+  overflow-x: hidden;
+  position: relative;
+
+  header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    z-index: 100;
+    padding: 15px 20px 15px 15px;
+    min-height: 100px;
+
+    div.logo {
+      display: flex;
+      flex: 2 0;
+      align-items: center;
+      margin: 10px;
+
+      a {
+        display: inline-block;
+
+        img {
+          width: 110px;
+        }
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: $secondary-color;
+        padding: 0 10px;
+      }
+    }
+
+    div.right-header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 1;
+
+      .user-btn,
+      .cart-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        margin-right: 20px;
+
+        a {
+          text-decoration: none;
+          color: $secondary-color;
+
+          &:visited {
+            color: $secondary-color;
+          }
+
+          &:hover {
+            color: $light-color;
+            transition: all 0.4s ease;
+          }
+        }
+      }
+
+      .menu-btn {
+        display: block;
+        cursor: pointer;
+        font-size: 2rem;
+        color: $secondary-color;
+        margin-right: 20px;
+        z-index: 101;
+        transition: all 0.4s ease;
+
+        &:hover {
+          color: $light-color;
+        }
+      }
+    }
+
+    @media screen and (max-width: 750px) {
+      flex-direction: column;
+      align-items: center;
+
+      div.logo {
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        a img {
+          width: 95px;
+        }
+      }
+
+      div.right-header {
+        .user-btn,
+        .cart-btn,
+        .menu-btn {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+
+  div.overlay-menu {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: $primary-color;
+    overflow-y: auto;
+    z-index: 99;
+    transition: all 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      height: 100%;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  div.login-modal {
+    position: fixed;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($primary-color, 0.27);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    backdrop-filter: blur(5px);
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background-color: $light-color;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transform: scale(0.8);
+      transition: transform 0.3s ease;
+
+      .modal-header {
+        background-color: $secondary-color;
+        color: $light-color;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        h2 {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+
+        button.close-modal {
+          font-size: 1.5rem;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border-radius: 50%;
+          border: none;
+          width: 40px;
+          height: 40px;
+          color: $primary-color;
+
+          &:hover {
+            transform: scale(1.2);
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 20px;
+
+        form {
+          .form-group {
+            margin-bottom: 15px;
+
+            label {
+              display: block;
+              margin-bottom: 5px;
+              color: $primary-color;
+              font-size: 1rem;
+            }
+
+            input {
+              width: 100%;
+              padding: 10px;
+              border: 2px solid #ddd;
+              border-radius: 5px;
+              font-size: 1rem;
+              transition: border-color 0.3s ease;
+
+              &:focus {
+                border-color: $secondary-color;
+                outline: none;
+              }
+            }
+          }
+
+          .form-actions {
+            margin-top: 20px;
+
+            .login-btn {
+              background-color: $secondary-color;
+              color: $light-color;
+              border: none;
+              padding: 10px 20px;
+              border-radius: 20px;
+              font-size: 1rem;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              width: 100%;
+
+              &:hover {
+                background-color: darken($secondary-color, 20%);
+              }
+            }
+
+            .form-links {
+              display: flex;
+              justify-content: space-between;
+              margin-top: 15px;
+
+              a {
+                color: $primary-color;
+                text-decoration: none;
+                font-size: 1rem;
+                transition: color 0.3s ease;
+
+                &:hover {
+                  color: $secondary-color;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.active .modal-content {
+      transform: scale(1);
+    }
+  }
+
+  body.modal-open {
+    overflow: hidden;
+  }
+
+  .overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100%;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: $light-color;
+
+    a {
+      text-decoration: none;
+      color: $secondary-color;
+      font-size: 2rem;
+      margin: 10px 0;
+      display: block;
+      transition: all 0.3s ease;
+      background-color: transparent;
+
+      &:hover {
+        color: $primary-color;
+        transform: scale(1.1);
+      }
+    }
+
+    @media screen and (max-height: 400px) {
+      a {
+        font-size: 1.5rem;
+        margin: 10px 0;
+      }
+    }
+  }
+
+  main {
+    // 關於我們頁面的英雄區域
+    section.about-hero {
+      background: url(../images/pexels/pexels-pavel-danilyuk-7590950.jpg)
+        no-repeat center/cover;
+      min-height: 70vh;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      position: relative;
+      z-index: 0;
+
+      div.filter {
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        min-height: 70vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
+
+      div.info {
+        text-align: center;
+        padding: 0 1.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2 {
+          font-size: 4rem;
+          color: $light-color;
+          margin-bottom: 1rem;
+        }
+
+        p {
+          font-size: 1.5rem;
+          color: $secondary-color;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    // 關於內容區域
+    section.about-content {
+      padding: 3rem 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+
+      .about-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 4rem;
+        gap: 2rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+
+        &.fade-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        &.reverse {
+          flex-direction: row-reverse;
+        }
+
+        .text-content {
+          flex: 1 1 500px;
+
+          h2 {
+            font-size: 2.5rem;
+            color: $secondary-color;
+            margin-bottom: 1.5rem;
+          }
+
+          p {
+            font-size: 1.1rem;
+            color: $light-color;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+          }
+        }
+
+        .image-content {
+          flex: 1 1 400px;
+
+          img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+
+            &:hover {
+              transform: scale(1.03);
+            }
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+
+          &.reverse {
+            flex-direction: column;
+          }
+
+          .text-content,
+          .image-content {
+            flex: 1 1 100%;
+          }
+        }
+      }
+    }
+
+    // 團隊區域
+    section.team-section {
+      padding: 3rem 1rem;
+      background-color: $dark-blue;
+
+      h2 {
+        font-size: 3rem;
+        color: $light-color;
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .team-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .team-member {
+          flex: 1 1 250px;
+          max-width: 300px;
+          background-color: $light-color;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: translateY(-10px);
+          }
+
+          .member-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              transition: transform 0.3s ease;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+          }
+
+          h3 {
+            color: $secondary-color;
+            font-size: 1.5rem;
+            margin: 1rem;
+            text-align: center;
+          }
+
+          p {
+            color: $primary-color;
+            text-align: center;
+            padding: 0 1rem;
+            margin-bottom: 1rem;
+          }
+        }
+      }
+    }
+
+    // 行動呼籲區域
+    section.cta-section {
+      background: url(../images/pexels/pexels-bouldering01.jpg) no-repeat
+        center/cover;
+      min-height: 40vh;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+
+      &.fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 800px;
+
+        h2 {
+          font-size: 3rem;
+          color: $light-color;
+          margin-bottom: 1.5rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+          color: $light-color;
+          margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1.5rem;
+
+          .cta-button {
+            background-color: $secondary-color;
+            color: $light-color;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background-color: $light-color;
+              color: $secondary-color;
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+
+    // Toast 通知
+    div.toast {
+      position: fixed;
+      bottom: 45px;
+      right: 80px;
+      background: rgb(56, 185, 106);
+      color: $light-color;
+      padding: 10px 20px;
+      border-radius: 5px 5px 20px 5px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      visibility: hidden;
+      font-size: 24px;
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    // 頁尾區域
+    section.footer {
+      padding: 5rem 3rem 1rem;
+      background-color: $dark-blue;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+
+      .footer-logo {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+
+        img {
+          width: 200px;
+        }
+
+        div.icons {
+          margin-top: 1.5rem;
+          display: flex;
+
+          .icon {
+            margin: 0 10px;
+
+            a {
+              text-decoration: none;
+              display: block;
+
+              svg {
+                width: 40px;
+                fill: $secondary-color;
+              }
+
+              &:hover svg {
+                fill: $light-color;
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+
+      .subscribe {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+
+        h2 {
+          font-size: 2rem;
+          color: $secondary-color;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+          color: $light-color;
+          margin-bottom: 0.5rem;
+        }
+
+        input {
+          width: 300px;
+          padding: 10px;
+          font-size: 1rem;
+          border: 3px solid $light-color;
+          border-radius: 10px;
+          outline: none;
+          margin-bottom: 1rem;
+
+          &:focus {
+            border-color: $secondary-color;
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+          }
+        }
+
+        button {
+          font-size: 1rem;
+          width: 100px;
+          border-radius: 10px;
+          background-color: $secondary-color;
+          color: $light-color;
+          border: none;
+          padding: 5px;
+
+          &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      .contact {
+        display: flex;
+        flex-direction: column;
+        flex: 0 1;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem;
+        min-width: 300px;
+
+        h2 {
+          font-size: 2rem;
+          color: $secondary-color;
+          margin-bottom: 0.5rem;
+        }
+
+        p {
+          font-size: 1rem;
+          color: $light-color;
+          margin-bottom: 0.5rem;
+        }
+      }
+    }
+  }
+}
